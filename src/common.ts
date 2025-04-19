@@ -1,4 +1,4 @@
-import esprima from "esprima";
+import * as esprima from "esprima";
 import escodegen from "escodegen";
 
 declare global {
