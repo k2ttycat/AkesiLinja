@@ -1,0 +1,11 @@
+{
+	"description": "A mod loader for Google Snake.",
+	"scripts": {
+		"build-userscript": "node scripts/build-userscript.js"
+	},
+	"dependencies": {
+		"parcel": "^2.14.4",
+		"@parcel/config-default": "^2.14.4",
+		"@parcel/core": "^2.14.4"
+	}
+}
