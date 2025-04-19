@@ -4,8 +4,11 @@
 		"build-userscript": "node scripts/build-userscript.js"
 	},
 	"dependencies": {
-		"parcel": "^2.14.4",
 		"@parcel/config-default": "^2.14.4",
-		"@parcel/core": "^2.14.4"
+		"@parcel/core": "^2.14.4",
+		"ast-types": "^0.14.2",
+		"escodegen": "^2.1.0",
+		"esprima": "^4.0.1",
+		"parcel": "^2.14.4"
 	}
 }

@@ -5,7 +5,6 @@ import { init } from "./common.ts";
 		alert("AsekiLinja is already loaded; maybe you have multiple copies trying to run at once?");
 	} else {
 		init();
-		var waitingForGameCode = true;
 
 		var appendChildOld = document.body.appendChild;
 		document.body.appendChild = function (...args) {
@@ -30,7 +29,6 @@ import { init } from "./common.ts";
 				}
 
 				// Now we have our game code.
-				waitingForGameCode = false;
 				var newGameCode = window.asekilinja.applyChanges(req.responseText);
 				(0, eval)(newGameCode);
 			};
