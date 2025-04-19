@@ -1,3 +1,22 @@
+/*
+ * Copyright (C) 2025 K2ttycat
+ *
+ * This file is part of AsejiLinja.
+ *
+ * AsejiLinja is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program. If not, see <https://www.gnu.org/licenses/>.
+ */
+
 import * as esprima from "esprima";
 import escodegen from "escodegen";
 
@@ -13,7 +32,6 @@ export function init() {
 	window.asekilinja = {
 		applyChanges(code) {
 			const ast = esprima.parseScript(code);
-			console.log(ast.body.length); // just to see it do something.
 			// @ts-ignore escodegen.FORMAT_MINIFY *does* exist.
 			var ret = escodegen.generate(ast, { format: escodegen.FORMAT_MINIFY });
 			return ret;

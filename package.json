@@ -3,6 +3,7 @@
 	"scripts": {
 		"build-userscript": "node scripts/build-userscript.js"
 	},
+	"license": "GPL-3.0-only",
 	"dependencies": {
 		"@parcel/config-default": "^2.14.4",
 		"@parcel/core": "^2.14.4",
