@@ -22,7 +22,7 @@ import { init } from "./common.ts";
 			const req = new XMLHttpRequest();
 			req.open('GET', elm.src, false);
 			req.onload = () => {
-				if (!/trophy|apple|snake_arcade|/.test(req.responseText)) {
+				if (!/trophy|apple|snake_arcade/.test(req.responseText)) {
 					// Oops, this code doesn't look like Google Snake!
 					returnVal = Reflect.apply(appendChildOld, this, args);
 					return;

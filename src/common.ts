@@ -15,7 +15,8 @@ export function init() {
 			const ast = esprima.parseScript(code);
 			console.log(ast.body.length); // just to see it do something.
 			// @ts-ignore escodegen.FORMAT_MINIFY *does* exist.
-			return escodegen.generate(ast, { format: escodegen.FORMAT_MINIFY });
+			var ret = escodegen.generate(ast, { format: escodegen.FORMAT_MINIFY });
+			return ret;
 		}
 	};
 }
