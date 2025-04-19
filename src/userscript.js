@@ -18,9 +18,9 @@ import { init } from "./common.ts";
 				(!elm.src.includes('/xjs/') || window.location.href.includes('fbx?fbx=snake_arcade'))
 			) return Reflect.apply(appendChildOld, this, args);
 
-			var returnVal = elm instanceof DocumentFragment ? new DocumentFragment : el;
+			var returnVal = elm instanceof DocumentFragment ? new DocumentFragment : elm;
 			const req = new XMLHttpRequest();
-			req.open('GET', el.src, false);
+			req.open('GET', elm.src, false);
 			req.onload = () => {
 				if (!/trophy|apple|snake_arcade|/.test(req.responseText)) {
 					// Oops, this code doesn't look like Google Snake!
