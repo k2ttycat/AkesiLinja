@@ -19,25 +19,50 @@
 
 import * as esprima from "esprima";
 import escodegen from "escodegen";
-import { ASTNode } from "ast-types";
+import ASTTypes from "ast-types";
 
 declare global {
 	interface Window {
 		asekilinja: {
 			applyChanges: (code: string) => string,
-			getAst: () => ASTNode
-			mod: string
+			getAst: () => ASTTypes.ASTNode,
+			ASTTypes
 		}
 	}
 }
 
 export function init() {
 	var gameAst;
+	var mod = "console.warn('No mod has been loaded.')";
+
+	// First load the mod from `snakeMod`.
+	mod = localStorage.getItem("snakeMod") || "";
+	if (mod === "") {
+		// We still don't have a mod, load it by fetching `snakeModUrl`.
+		const snakeModUrl = localStorage.getItem("snakeModUrl");
+		if (snakeModUrl) {
+			const req = new XMLHttpRequest();
+			req.open("GET", snakeModUrl, false);
+			req.onload = () => {
+				if (req.status !== 200) {
+					alert(`Failed to load mod URL. Received status: ${req.status} ${req.statusText}.`);
+					return;
+				}
+				mod = req.responseText;
+			};
+			req.onerror = (error) => {
+				alert("Failed to load mod URL due to network error.");
+				console.error(error);
+			};
+			req.send();
+		}
+	}
+
 	window.asekilinja = {
 		applyChanges(code) {
 			gameAst = esprima.parseScript(code);
 			try {
-				(0, eval)(window.asekilinja.mod);
+				(0, eval)(mod);
 				return escodegen.generate(gameAst, { format: escodegen.FORMAT_MINIFY, verbatim: "x-verbatim" });
 			} catch (error) {
 				alert("Mod threw an error when attempting to load. Running vanilla version instead.");
@@ -48,30 +73,6 @@ export function init() {
 		getAst() {
 			return gameAst;
 		},
-		mod: ""
+		ASTTypes
 	};
-
-	// First load the mod from `snakeMod`.
-	window.asekilinja.mod = localStorage.getItem("snakeMod") || "";
-	if (window.asekilinja.mod !== "") return;
-
-	// If we still don't have a mod, load it by fetching `snakeModUrl`.
-	const snakeModUrl = localStorage.getItem("snakeModUrl");
-	if (snakeModUrl) {
-		const req = new XMLHttpRequest();
-		req.open("GET", snakeModUrl, false);
-		req.onload = () => {
-			if (req.status !== 200) {
-				alert(`Failed to load mod due to mod URL status: ${req.status} ${req.statusText}.`);
-				return;
-			}
-			window.asekilinja.mod = req.responseText;
-		};
-		req.onerror = (error) => {
-			alert(`Failed to load mod due to network error.`);
-			console.error(error);
-		};
-		req.send();
-	}
-	console.warn("No mod has been specified.");
 }
