@@ -1,4 +1,4 @@
-# AsekiLinja
+# AkesiLinja
 
 A mod loader for Google Snake.
 

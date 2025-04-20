@@ -1,9 +1,9 @@
 /*
  * Copyright (C) 2025 K2ttycat
  *
- * This file is part of AsejiLinja.
+ * This file is part of AkesiLinja.
  *
- * AsejiLinja is free software: you can redistribute it and/or modify
+ * AkesiLinja is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
  * (at your option) any later version.
@@ -40,7 +40,7 @@ try {
 	let { bundleGraph } = await bundler.run();
 
 	for (let bundle of bundleGraph.getBundles()) {
-		fs.writeFileSync(path.resolve("dist/AsekiLinja-userscript.js"), fs.readFileSync(path.resolve("src/userscript-metadata.js"), "utf8") + await outputFS.readFile(bundle.filePath, "utf8"));
+		fs.writeFileSync(path.resolve("dist/AkesiLinja-userscript.js"), fs.readFileSync(path.resolve("src/userscript-metadata.js"), "utf8") + await outputFS.readFile(bundle.filePath, "utf8"));
 	}
 } finally {
 	await workerFarm.end();

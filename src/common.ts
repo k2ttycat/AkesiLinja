@@ -1,9 +1,9 @@
 /*
  * Copyright (C) 2025 K2ttycat
  *
- * This file is part of AsejiLinja.
+ * This file is part of AkesiLinja.
  *
- * AsejiLinja is free software: you can redistribute it and/or modify
+ * AkesiLinja is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
  * (at your option) any later version.
@@ -23,7 +23,7 @@ import ASTTypes from "ast-types";
 
 declare global {
 	interface Window {
-		asekilinja: {
+		akesilinja: {
 			applyChanges: (code: string) => string,
 			getAst: () => ASTTypes.ASTNode,
 			ASTTypes
@@ -58,7 +58,7 @@ export function init() {
 	}
 
 	// Global object to provide an API for mods.
-	window.asekilinja = {
+	window.akesilinja = {
 		applyChanges(code) {
 			gameAst = esprima.parseScript(code);
 			try {
@@ -79,13 +79,13 @@ export function init() {
 	// GUI menu for controling what mod gets loaded.
 	const popoverContainer = document.createElement("div");
 	popoverContainer.innerHTML = `
-		<div popover="manual" id="asekilinja-menu">
-			<p>Hello world! This is the AsekiLinja menu!</p>
+		<div popover="manual" id="akesilinja-menu">
+			<p>Hello world! This is the AkesiLinja menu!</p>
 		</div>
 	`;
 	const popoverButton = document.createElement("button");
-	popoverButton.innerText = "AsekiLinja Mods";
-	popoverButton.setAttribute("popovertarget", "asekilinja-menu");
+	popoverButton.innerText = "AkesiLinja Mods";
+	popoverButton.setAttribute("popovertarget", "akesilinja-menu");
 	Object.assign(popoverButton.style, {
 		ZIndex: "99999",
 		position: "fixed",

@@ -1,9 +1,9 @@
 /*
  * Copyright (C) 2025 K2ttycat
  *
- * This file is part of AsejiLinja.
+ * This file is part of AkesiLinja.
  *
- * AsejiLinja is free software: you can redistribute it and/or modify
+ * AkesiLinja is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
  * (at your option) any later version.
@@ -18,15 +18,15 @@
  */
 
 // ==UserScript==
-// @name AsekiLinja
+// @name AkesiLinja
 // @namespace https://github.com/k2ttycat
 // @version 1.0
 // @description A mod loader for Google Snake.
 // @author k2ttycat (https://github.com/k2ttycat)
 // @run-at document-body
 // @grant none
-// @updateURL https://github.com/k2ttycat/AsekiLinja/raw/main/dist/AsekiLinja-userscript.js
-// @downloadURL https://github.com/k2ttycat/AsekiLinja/raw/main/dist/AsekiLinja-userscript.js
+// @updateURL https://github.com/k2ttycat/AsekiLinja/raw/main/dist/AkesiLinja-userscript.js
+// @downloadURL https://github.com/k2ttycat/AsekiLinja/raw/main/dist/AkesiLinja-userscript.js
 // @match https://*.google.com/search*
 // @match https://*.google.com/fbx?fbx=snake_arcade*
 // ==/UserScript==

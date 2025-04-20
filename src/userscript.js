@@ -1,9 +1,9 @@
 /*
  * Copyright (C) 2025 K2ttycat
  *
- * This file is part of AsejiLinja.
+ * This file is part of AkesiLinja.
  *
- * AsejiLinja is free software: you can redistribute it and/or modify
+ * AkesiLinja is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
  * (at your option) any later version.
@@ -20,8 +20,8 @@
 import { init } from "./common.ts";
 
 (function () {
-	if (window.asekilinja) {
-		alert("AsekiLinja is already loaded; maybe you have multiple copies trying to run at once?");
+	if (window.akesilinja) {
+		alert("AkesiLinja is already loaded; maybe you have multiple copies trying to run at once?");
 	} else {
 		init();
 
@@ -48,7 +48,7 @@ import { init } from "./common.ts";
 				}
 
 				// Now we have our game code.
-				var newGameCode = window.asekilinja.applyChanges(req.responseText);
+				var newGameCode = window.akesilinja.applyChanges(req.responseText);
 				(0, eval)(newGameCode);
 			};
 			req.send();
