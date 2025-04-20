@@ -2,7 +2,14 @@
 
 A mod loader for Google Snake.
 
-/!\ WARNING! /!\ This code is not working yet!
+/!\ WARNING! /!\ This code is not user friendly yet!
+
+## Usage
+
+Currently there is no GUI, but you can load your mod using one of the following options.
+
+1. Run `localStorage.setItem("snakeMod", yourMod)`, then refresh the page.
+2. Run `localStorage.setItem("snakeModUrl", yourUrl)`, and host your mod at `yourUrl`.
 
 ## License
 
