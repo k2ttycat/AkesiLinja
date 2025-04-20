@@ -24,6 +24,7 @@
 // @description A mod loader for Google Snake.
 // @author k2ttycat (https://github.com/k2ttycat)
 // @run-at document-body
+// @grant none
 // @updateURL https://github.com/k2ttycat/AsekiLinja/raw/main/dist/AsekiLinja-userscript.js
 // @downloadURL https://github.com/k2ttycat/AsekiLinja/raw/main/dist/AsekiLinja-userscript.js
 // @match https://*.google.com/search*
