@@ -35,10 +35,9 @@ export function init() {
 	var gameAst;
 	var mod = "console.warn('No mod has been loaded.')";
 
-	// First load the mod from `snakeMod`.
+	// Load the currently selected mod.
 	mod = localStorage.getItem("snakeMod") || "";
 	if (mod === "") {
-		// We still don't have a mod, load it by fetching `snakeModUrl`.
 		const snakeModUrl = localStorage.getItem("snakeModUrl");
 		if (snakeModUrl) {
 			const req = new XMLHttpRequest();
@@ -58,6 +57,7 @@ export function init() {
 		}
 	}
 
+	// Global object to provide an API for mods.
 	window.asekilinja = {
 		applyChanges(code) {
 			gameAst = esprima.parseScript(code);
@@ -75,4 +75,23 @@ export function init() {
 		},
 		ASTTypes
 	};
+
+	// GUI menu for controling what mod gets loaded.
+	const popoverContainer = document.createElement("div");
+	popoverContainer.innerHTML = `
+		<div popover="manual" id="asekilinja-menu">
+			<p>Hello world! This is the AsekiLinja menu!</p>
+		</div>
+	`;
+	const popoverButton = document.createElement("button");
+	popoverButton.innerText = "AsekiLinja Mods";
+	popoverButton.setAttribute("popovertarget", "asekilinja-menu");
+	Object.assign(popoverButton.style, {
+		ZIndex: "99999",
+		position: "fixed",
+		bottom: "0px",
+		right: "0px"
+	});
+	document.body.appendChild(popoverContainer);
+	document.body.appendChild(popoverButton);
 }
