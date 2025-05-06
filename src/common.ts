@@ -17,8 +17,10 @@
  * along with this program. If not, see <https://www.gnu.org/licenses/>.
  */
 
-import * as esprima from "esprima";
-import escodegen from "escodegen";
+import * as parser from "@babel/parser";
+import * as generator from "@babel/generator";
+import { parse } from "@babel/parser";
+import { generate } from "@babel/generator";
 import ASTTypes from "ast-types";
 
 declare global {
@@ -26,7 +28,9 @@ declare global {
 		akesilinja: {
 			applyChanges: (code: string) => string,
 			getAst: () => ASTTypes.ASTNode,
-			ASTTypes
+			ASTTypes,
+			parser,
+			generator
 		}
 	}
 }
@@ -60,10 +64,10 @@ export function init() {
 	// Global object to provide an API for mods.
 	window.akesilinja = {
 		applyChanges(code) {
-			gameAst = esprima.parseScript(code);
+			gameAst = parse(code);
 			try {
 				(0, eval)(mod);
-				return escodegen.generate(gameAst, { format: escodegen.FORMAT_MINIFY, verbatim: "x-verbatim" });
+				return generate(gameAst).code;
 			} catch (error) {
 				alert("Mod threw an error when attempting to load. Running vanilla version instead.");
 				console.error(error);
@@ -73,7 +77,9 @@ export function init() {
 		getAst() {
 			return gameAst;
 		},
-		ASTTypes
+		ASTTypes,
+		parser,
+		generator
 	};
 
 	// GUI menu for controling what mod gets loaded.
