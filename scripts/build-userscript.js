@@ -26,14 +26,15 @@ let workerFarm = createWorkerFarm();
 let outputFS = new parcelFS.MemoryFS(workerFarm);
 
 let bundler = new Parcel({
-	entries: "src/userscript.js",
+	entries: "src/userscript.ts",
 	mode: "production",
 	defaultTargetOptions: {
 		sourceMaps: false
 	},
 	defaultConfig: "@parcel/config-default",
 	workerFarm,
-	outputFS
+	outputFS,
+	shouldAutoInstall: true
 });
 
 try {
